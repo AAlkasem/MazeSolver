@@ -14,19 +14,23 @@ void Stack::push(Location location) {
 
 void Stack::pop() {
     // Checks if the stack is empty
-    if(m_first != nullptr){
-        auto node = m_first;
-        m_first = m_first->m_next;
-        delete node;
-    }else{
-        std::cout << "Stack is empty" << std::endl;
-    }
+    auto node = m_first;
+    m_first = m_first ? m_first->m_next : nullptr;
+    delete node;
+}
+
+int Stack::getCol() {
+    return m_first->m_data.m_col;
+}
+
+int Stack::getRow() {
+    return m_first->m_data.m_row;
 }
 
 std::ostream & operator<<(std::ostream& output, const Stack &stack){
     auto node= stack.m_first;
     while(node != nullptr){
-        std::cout << "Column, Row (" << node->m_data.m_col << ", " << node->m_data.m_row << ") " << std::endl;
+        output << "Column, Row (" << node->m_data.m_col << ", " << node->m_data.m_row << ") " << std::endl;
         node = node->m_next;
     }
     return output;
