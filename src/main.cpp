@@ -2,18 +2,17 @@
 #include "stack.h"
 #include "maze.h"
 
-using namespace std;
 
 int main() {
-    string mazeFile = "maze.txt";
-    ifstream inputFile(mazeFile);
+    std::string mazeFile = "maze.txt";
+    std::ifstream inputFile(mazeFile);
 
     // read in maze from file
-    std::vector<vector<char>> maze;
+    std::vector<std::vector<char>> maze;
     char c;
     std::vector<char> temp;
     if (inputFile.is_open()) {
-        cout << "File opened successfully" << endl;
+        std::cout << "File opened successfully" << std::endl;
         while (inputFile.get(c)) {
             if (c == '\n') { // check if end of line is reached
                 maze.push_back(temp);
@@ -28,16 +27,16 @@ int main() {
         }
         inputFile.close();
     }else{
-        cout << "File cannot be opened" << endl;
+        std::cout << "File cannot be opened" << std::endl;
         return 0;
     }
 
     // print maze on console
     for (int i = 0; i < maze.size(); i++) {
         for (int j = 0; j < maze[i].size(); j++) {
-            cout << maze[i][j];
+            std::cout << maze[i][j];
         }
-        cout << endl;
+        std::cout << std::endl;
     }
     std::cout << maze.size() << std::endl;
 
@@ -48,18 +47,9 @@ int main() {
 
     // initialize stack and visited/parent vectors
     Stack stack;
-
-
     // push starting position onto stack and mark as visited
-
-
-
-
-        // mark cell as visited and put a '#' symbol in the maze
-
-
-        // examine neighbors
-
+    // mark cell as visited and put a '#' symbol in the maze
+    // examine neighbors
     // print maze on console
 
     return 0;

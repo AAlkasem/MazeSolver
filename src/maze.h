@@ -10,5 +10,4 @@ class Maze {
 
 };
 
-void SavePath(std::stack<Stack *> &path);
 #endif //ASSIGNMENT_2_MAZE_H
