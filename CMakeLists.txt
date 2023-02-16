@@ -4,4 +4,4 @@ project(Assignment_2)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Assignment_2
-        src/main.cpp)
+        src/main.cpp src/maze.cpp src/maze.h src/stack.cpp src/stack.h)
