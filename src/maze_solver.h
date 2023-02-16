@@ -13,10 +13,6 @@ const int MAZE_START_COL = 0;
 class Maze_Solver {
 public:
     Maze_Solver(std::string file_name, std::string output_file_name);
-    void solveMaze();
-    void saveMaze();
-
-
 };
 
 #endif //ASSIGNMENT_2_MAZE_SOLVER_H

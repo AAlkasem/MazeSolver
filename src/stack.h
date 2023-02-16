@@ -25,7 +25,6 @@ public:
     Node *m_first{nullptr};
     void push(Location location);
     void pop();
-
     int getCol();
     int getRow();
     friend std::ostream & operator<<(std::ostream &os, const Stack &stack);
