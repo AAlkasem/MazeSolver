@@ -10,10 +10,9 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    std::string inFile = argv[1],
-                outFile = argv[2],
-                mazeFile = inFile,
-                mazeOutputFile = outFile;
+    std::string mazeFile = argv[1],
+                mazeOutFile = argv[2];
+
     //Maze_Solver(mazeFile, "output.txt");
     std::ifstream inputFile(mazeFile);
 
@@ -22,7 +21,6 @@ int main(int argc, char* argv[]) {
     char c;
     std::vector<char> temp;
     if (inputFile.is_open()) {
-        std::cout << "File opened successfully" << std::endl;
         while (inputFile.get(c)) {
             if (c == '\n') { // check if end of line is reached
                 maze.push_back(temp);
@@ -44,8 +42,8 @@ int main(int argc, char* argv[]) {
     solvedMaze = maze;
 
     // initialize start and end positions
-    int m_start_row = 1;
-    int m_start_col = 0;
+    int m_start_row = MAZE_START_ROW;
+    int m_start_col = MAZE_START_COL;
     int m_end_row = maze.size()-1;
     int m_end_col = maze[0].size()-1;
     int m_current_row = m_start_row;
@@ -105,15 +103,8 @@ int main(int argc, char* argv[]) {
         solvedMaze[m_current_row][m_current_col] = '#';
         stack.pop();
     }
-    // print maze on console
-//    for (int i = 0; i < solvedMaze.size(); i++) {
-//        for (int j = 0; j < solvedMaze[i].size(); j++) {
-//            std::cout << solvedMaze[i][j];
-//        }
-//        std::cout << std::endl;
-//    }
     // Use a loop to iterate over the elements of the vector and write them to the file
-    std::ofstream outputFile(mazeOutputFile);
+    std::ofstream outputFile(mazeOutFile);
     for (const auto& innerVector : solvedMaze) {
         for (const auto& element : innerVector) {
             outputFile << element;
@@ -122,5 +113,14 @@ int main(int argc, char* argv[]) {
     }
     // Close the output file stream
     outputFile.close();
+
+    // Prints the solved maze to the console
+    std::cout << "Maze solved!" << std::endl;
+    for (const auto& innerVector : solvedMaze) {
+        for (const auto& element : innerVector) {
+            std::cout << element;
+        }
+        std::cout << std::endl;  // Add a newline character after each inner vector
+    }
     return 0;
 }
